@@ -16,7 +16,12 @@ export class GoalComponent implements OnInit {
     new Goal(5, 'Solve Project Bugs',  'Solve bugs in my angular projects my friends projects', new Date(2022, 3, 8)),
     new Goal(6, 'Plot my Core Course Plan',  'I have to come up with a plan on how i will be approaching my studies for the next four months', new Date(2022, 3, 10)),
   ];
-
+  addNewGoal(goal: Goal){
+    let goalLength = this.goals.length;
+    goal.id = goalLength+1;
+    goal.completeDate = new Date(goal.completeDate)
+    this.goals.push(goal)
+  }
   toggleDetails(index: string | number){
     // @ts-ignore
     this.goals[index].showDescription = !this.goals[index].showDescription;
