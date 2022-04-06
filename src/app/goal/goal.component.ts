@@ -16,13 +16,22 @@ export class GoalComponent implements OnInit {
     new Goal(5, 'Solve Project Bugs',  'Solve bugs in my angular projects my friends projects', new Date(2022, 3, 8)),
     new Goal(6, 'Plot my Core Course Plan',  'I have to come up with a plan on how i will be approaching my studies for the next four months', new Date(2022, 3, 10)),
   ];
+
   toggleDetails(index: string | number){
     // @ts-ignore
     this.goals[index].showDescription = !this.goals[index].showDescription;
   }
-  completeGoal(isComplete: any, index: number){
+  goalDelete(isComplete: any, index: number) {
+    function constructor() {
+
+    }
+
     if (isComplete) {
-      this.goals.splice(index,1);
+      let toDelete = confirm(`Are you sure you want to delete ${this.goals[index].name}?`)
+
+      if (toDelete) {
+        this.goals.splice(index, 1)
+      }
     }
   }
   constructor() { }
